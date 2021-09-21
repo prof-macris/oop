@@ -31,6 +31,7 @@ class AtmV1 {
             );
             msg = "Operation completed";
             break;
+            
           case 2:
             value = Float.parseFloat(
               JOptionPane.showInputDialog(null, "Enter value to withdraw")
@@ -46,12 +47,15 @@ class AtmV1 {
               }
             }
             break;
+            
           case 3:
             msg = "Amount: $ " + df.format(balance);
             break;
+            
           case 4:
             System.exit(0);
             break;
+            
           default:
             msg = "Invalid operation";
             break;
