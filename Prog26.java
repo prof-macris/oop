@@ -14,30 +14,30 @@ public class Prog26 {
 
   public static class Pessoa {
     private String nome;
-      private int idade;
-      private float peso;
-        
-      //gets and sets
-      public String getNome() { return this.nome; }
-      public void setNome(String Nome) { this.nome = Nome; }
-      public int getIdade() { return this.idade; }
-      public void setIdade(int Idade) { this.idade = Idade; }
-      public float getPeso() { return this.peso; }
-      public void setPeso(float Peso) { this.peso = Peso; }   
+    private int idade;
+    private float peso;
 
-      public String identificar() {
-        return "ID" + this.idade + this.nome.toUpperCase();
-      }
+    //gets and sets
+    public String getNome() { return this.nome; }
+    public void setNome(String Nome) { this.nome = Nome; }
+    public int getIdade() { return this.idade; }
+    public void setIdade(int Idade) { this.idade = Idade; }
+    public float getPeso() { return this.peso; }
+    public void setPeso(float Peso) { this.peso = Peso; }   
 
-      public String comunicar() {
-        return"Falar";
-      }
+    public String identificar() {
+      return "ID" + this.idade + this.nome.toUpperCase();
+    }
+
+    public String comunicar() {
+      return"Falar";
+    }
   }
 
   public static void main (String args[]) {  
       Pessoa aluno = new Pessoa();
 
-      aluno.nome = JOptionPane.showInputDialog(null, "Informe o nome do   aluno");
+      aluno.setNome(JOptionPane.showInputDialog(null, "Informe o nome do   aluno"));
 
       mostrarMsg("Nome: " + aluno.getNome());
 
