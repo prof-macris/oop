@@ -1,6 +1,6 @@
 /*
-  file: Prog27.java (pt-br version)
-  objective: OOP inheritance example
+  file: Prog27.java
+  objective: OOP inheritance example (Vet Clinic context)
   author: Prof. Macris, oct-2021, tch.macris@gmail.com
 */
 
@@ -8,78 +8,78 @@ import javax.swing.JOptionPane;
 
 public class Prog27 {
 
-  public static void mostrarMsg(String text) {
+  public static void showData(String text) {
     JOptionPane.showMessageDialog(null, text);
   }
-
-  public static String entrarDados(String text) {
+  
+  public static String enterData(String text) {
     return JOptionPane.showInputDialog(null, text);
-  }
-
-  public static class Animal {
-    private String nome;
-    private int idade;
-    private float peso;
-      
-    //gets and sets
-    public String getNome() { return this.nome; }
-    public void setNome(String Nome) { this.nome = Nome; }
-    public int getIdade() { return this.idade; }
-    public void setIdade(int Idade) { this.idade = Idade; }
-    public float getPeso() { return this.peso; }
-    public void setPeso(float Peso) { this.peso = Peso; }   
-
-    public String identificar() {
-      return "ID" + this.idade + this.nome.toUpperCase();
-    }
-
-    public String comunicar() {
-      return"Falar";
-    }
   } 
 
-  public static class Pessoa extends Animal {
-    private String instrucao;
-    private String conjuge;
-      
-    //gets and sets
-    public String getInstrucao() { return this.instrucao; }
-    public void setInstrucao(String Instrucao) { this.instrucao = Instrucao; }
-    public String getConjuge() { return this.conjuge; }
-    public void setConjuge(String Conjuge) { this.conjuge = Conjuge; }  
+  public static class Animal {
+    private String name;
+    private int age;
+    private float weight;
+    
+    // gets and sets
+    public String getName() { return this.name; }
+    public void setName(String Name) { this.name = Name; }
+    public int getAge() { return this.age; }
+    public void setAge(int Age) { this.age = Age; }
+    public float getWeight() { return this.weight; }
+    public void setWeight(float Weight) { this.weight = Weight; }  
 
-    public String raciocinar() {
-      return "capacidade de raciocinar: sim";
+    public String identify() {
+      return "ID" + this.age + this.name.toUpperCase();
+    }
+
+    public String communicate() {
+      return "";
     }
   }
 
-  public static class Cao extends Animal{
-    private boolean cauda;
-    private String raca;
-      
-    //gets and sets
-    public boolean getCauda() { return this.cauda; }
-    public void setCauda(boolean Cauda) { this.cauda = Cauda; }
-    public String getRaca() { return this.raca; }
-    public void setRaca(String Raca) { this.raca = Raca; }  
+  public static class Person extends Animal {
+    private String education;
+    private String partner;
+    
+    // gets and sets
+    public String getEducation() { return this.education; }
+    public void setEducation(String Education) { this.education = Education; }
+    public String getPartner() { return this.partner; }
+    public void setPartner(String Partner) { this.partner = Partner; }
 
-    public String morder() {
-      return "capacidade de morder: sim";
+    public String reasoning() {
+      return "ability to reason: yes";
     }
   }
 
-  public static void main (String args[]) {  
-      Pessoa func1 = new Pessoa();
-      Cao cao1 = new Cao();
+  public static class Dog extends Animal {
+    private String race;    
+    private boolean tail;
+    
+    // gets and sets
+    public String getRace() { return this.race; }
+    public void setRace(String Race) { this.race = Race; }    
+    public boolean getTail() { return this.tail; }
+    public void setTail(String Tail) { this.tail = (Tail.equals("yes")) ? true : false; }
 
-      // teste com funcionario
-      func1.setNome(entrarDados("Informe o nome do funcionario"));
-      func1.setConjuge(entrarDados("Informe o nome do conjuge"));
-      mostrarMsg(func1.getNome() + "\n" + func1.getConjuge());
+    public String bite() {
+      return "ability to bite: yes";
+    }
+  }  
 
-      // teste com cao
-      cao1.setNome(entrarDados("Informe o nome do cao"));
-      cao1.setCauda(Boolean.parseBoolean(entrarDados("Informe se o cao possui cauda")));
-      mostrarMsg(cao1.getNome() + "\n" + cao1.getCauda());
+  public static void main (String args[]) {
+    Person emp1 = new Person();
+    Dog dog1 = new Dog();
+
+    // Employee test
+    emp1.setName(enterData("Employee name"));
+    emp1.setPartner(enterData("Partner name"));
+    showData("-Employee-\n" + emp1.getName() + "\nPartner: " + emp1.getPartner() + "\n" + emp1.reasoning());
+
+    // Dog test    
+    dog1.setName(enterData("Dog name"));
+    dog1.setTail(enterData("Tail?"));
+    showData("-Dog-\n"  + dog1.getName() + "\nTail: " + dog1.getTail() + "\n" + dog1.bite());
   }
 }
