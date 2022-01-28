@@ -1,6 +1,6 @@
 /*
-  file: Prog26.java (pt-br version)
-  objective: OOP encapsulation example
+  file: Prog26.java
+  objective: OOP encapsulation example (Vet Clinic context)
   author: Prof. Macris, oct-2021, tch.macris@gmail.com
 */
 
@@ -8,39 +8,42 @@ import javax.swing.JOptionPane;
 
 public class Prog26 {
 
-  public static void mostrarMsg(String text) {
+  public static void showData(String text) {
     JOptionPane.showMessageDialog(null, text);
   }
+  
+  public static String enterData(String text) {
+    return JOptionPane.showInputDialog(null, text);
+  } 
 
-  public static class Pessoa {
-    private String nome;
-    private int idade;
-    private float peso;
+  public static class Person {
+    private String name;
+    private int age;
+    private float weight;
+    
+    // gets and sets
+    public String getName() { return this.name; }
+    public void setName(String Name) { this.name = Name; }
+    public int getAge() { return this.age; }
+    public void setAge(int Age) { this.age = Age; }
+    public float getWeight() { return this.weight; }
+    public void setWeight(float Weight) { this.weight = Weight; }  
 
-    //gets and sets
-    public String getNome() { return this.nome; }
-    public void setNome(String Nome) { this.nome = Nome; }
-    public int getIdade() { return this.idade; }
-    public void setIdade(int Idade) { this.idade = Idade; }
-    public float getPeso() { return this.peso; }
-    public void setPeso(float Peso) { this.peso = Peso; }   
-
-    public String identificar() {
-      return "ID" + this.idade + this.nome.toUpperCase();
+    public String identify() {
+      return "ID" + this.age + this.name.toUpperCase();
     }
 
-    public String comunicar() {
-      return"Falar";
+    public String communicate() {
+      return "Talk";
     }
-  }
+  }  
+  public static void main (String args[]) {
+    Person student = new Person();
 
-  public static void main (String args[]) {  
-      Pessoa aluno = new Pessoa();
+    student.setName(enterData("Enter student name"));
+    student.setAge(Integer.parseInt(enterData("Enter student age")));
 
-      aluno.setNome(JOptionPane.showInputDialog(null, "Informe o nome do   aluno"));
-
-      mostrarMsg("Nome: " + aluno.getNome());
-
-      mostrarMsg("Codigo: " + aluno.identificar());
+    showData("Name: " + student.getName());
+    showData("Code: " + student.identify());
   }
 }
