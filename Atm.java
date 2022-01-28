@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 
 class Atm {
    public static void main (String args[]) {
-      
       float value=0, balance=0;
       int option=0;
       String msg="";
@@ -19,11 +18,7 @@ class Atm {
       DecimalFormat df = new DecimalFormat("#.##");
 
       while (option != 4) {
-
-        option = Integer.parseInt(
-          JOptionPane.showInputDialog(null, menu)
-        );
-
+        option = Integer.parseInt(JOptionPane.showInputDialog(null, menu));
         switch (option) {
           case 1:
             balance += Float.parseFloat(
@@ -32,9 +27,7 @@ class Atm {
             msg = "Operation completed";
             break;
           case 2:
-            value = Float.parseFloat(
-              JOptionPane.showInputDialog(null, "Enter value to withdraw")
-            );
+            value = Float.parseFloat(JOptionPane.showInputDialog(null, "Enter value to withdraw"));
             if (value > balance) {
               msg = "Insufficient balance for withdraw\nOperation canceled";
             } else {
