@@ -1,6 +1,6 @@
 /*
-  file: Prog25.java (pt-br version)
-  objective: OOP real world abstraction example
+  file: Prog25.java
+  objective: OOP abstraction version example (Ball context)
   author: Prof. Macris, oct-2021, tch.macris@gmail.com
 */
 
@@ -8,51 +8,49 @@ import javax.swing.JOptionPane;
 
 public class Prog25 {
 
-  public static void mostrarMsg(String text) {
+  public static void showData(String text) {
     JOptionPane.showMessageDialog(null, text);
   }
+  
+  public static String enterData(String text) {
+    return JOptionPane.showInputDialog(null, text);
+  } 
 
-  public static class Bola {
-   String Cor="";
-   String Formato="";
-   float Peso=0;
-   float Valor=0;
-   boolean Cheia=true;
-   
-   public void encherBola() {
-     Cheia = true;
-   }
+  public static class Ball {
+    String Color;
+    String Format; 
+    float Weight;
+    double Price;
+    boolean Full;
+    
+    public void emptyBall() {
+      Full = false;
+    }
 
-   public void esvaziarBola() {
-     Cheia = false;
-   }
+    public void fillBall() {
+       Full = true;
+    }
 
-   public String lancarBola(String direcao, float distancia) {
-     String msg="";
-     msg=direcao + ", " + distancia + " mts";
-     return msg;	 
-   }
-  }
-
+    public String throwBall(String direction, float distance) {
+      return direction + ", " + distance + " mts";
+    }
+  }  
   public static void main (String args[]) {
+    // Basketball instance
+    Ball basq1 = new Ball();
 
-      // Instanciando 2 objetos da classe bola
-      Bola objBasq = new Bola();
-      Bola objFut = new Bola();
-    
-      //Atribuindo alguns valores aos objetos
-      objBasq.Cor="Laranja";
-      objBasq.Valor=35;
+    // Assigning values to some properties
+    basq1.Format = "Circular";
+    basq1.Color = "Orange";
+    basq1.Price = 35;
 
-      objFut.Cor="Branco e Preto";
-      objFut.Formato="Circular";
-
-      //Executando alguns metodos dos objetos
-      objBasq.esvaziarBola();
-      String lancamento=objFut.lancarBola("norte", 50);
-    
-      //Testando alguns comandos
-      mostrarMsg("Bola de basquete cheia ? " + objBasq.Cheia);
-      mostrarMsg("Ultimo lancamento da bola de futebol:\n" +  lancamento);
+    // Running some methods
+    basq1.emptyBall();
+    String pitch = basq1.throwBall("north", 50);
+	  
+    // Testing results
+    showData("Ball full? " + basq1.Full);
+    showData("Ball shape: " + basq1.Format);
+    showData("Last ball pitch:\n" +  pitch);
   }
 }
